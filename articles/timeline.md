@@ -6,7 +6,7 @@ If every incoming sample moves the visible chart back to the newest point, the i
 
 ## How the early graphs evolved
 
-A graph-related commit on 3 October 2026 experimented with reducing the visible chart window from three laps to two, changed its initial maximum position and introduced legend values that could be updated when the cursor selected a point.
+An early graph-related change experimented with reducing the visible chart window from three laps to two, changed its initial maximum position and introduced legend values that could be updated when the cursor selected a point.
 
 These changes show that chart navigation was already a concern early in the project. The amount of information visible at once, the initial viewport and the values available without active cursor interaction all affect whether a user can make sense of the visualization.
 

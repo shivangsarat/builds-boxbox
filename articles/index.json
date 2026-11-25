@@ -7,7 +7,7 @@
     "source": "intro.md",
     "image": "telemetry-overview.png",
     "alt": "Current F1 Telemetry homepage with championship standings and race calendar.",
-    "caption": "Current product interface, captured 25 November 2026. Not the original October prototype.",
+    "caption": "Current product interface, showing the application after its early development. Not the original prototype.",
     "tags": [
       "Project origins",
       "Architecture"

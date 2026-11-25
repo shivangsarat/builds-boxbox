@@ -6,7 +6,7 @@ This is the first chapter of BoxBox Builds, a record of the product and engineer
 
 ## The earliest recorded implementation
 
-The earliest main-branch commit is dated 2 October 2026. The repository already contained a TypeScript backend, a data-service module, telemetry processing, a WebSocket handler, and a React frontend with home, race and driver-profile views. That is the beginning of the recorded main-branch history, not necessarily the first day I considered the idea or wrote an uncommitted prototype.
+The earliest recorded main-branch implementation already had a recognizable application structure. The repository already contained a TypeScript backend, a data-service module, telemetry processing, a WebSocket handler, and a React frontend with home, race and driver-profile views. That is the beginning of the recorded main-branch history, not necessarily the first day I considered the idea or wrote an uncommitted prototype.
 
 The three views answer different questions. The homepage gives a wider view of the championship and race calendar. The race dashboard brings together information about one session. A driver profile lets the viewer investigate an individual race in more detail. The distinction is important because the data needed for a championship standings table is very different from the data needed to draw a continuous telemetry graph.
 
@@ -30,7 +30,7 @@ The early repository had separate modules for retrieval and processing. Later de
 
 ## The first experiments
 
-The main-branch history records several early changes in quick succession. On 2 October a small development service was added to make an archived race appear current. The next day, changes explored paid data access, request pacing and chart navigation. Later commits addressed WebSocket handling and lap tables.
+The main-branch history records several early changes in quick succession. An early change added a small development service to make an archived race appear current. Subsequent changes explored paid data access, request pacing and chart navigation. Later commits addressed WebSocket handling and lap tables.
 
 The sequence is a reminder that a real-time application evolves along several dimensions at once. Making data available is one concern; controlling how much data is retrieved is another. Making the interface useful while that data changes is a third. Progress in any one dimension can expose weaknesses in the others.
 
@@ -52,7 +52,7 @@ Where evidence is incomplete, the right answer is to leave the uncertainty visib
 
 ## The application today
 
-The captured interface shows a championship overview, historical race dashboard, driver profiles, telemetry timelines and tyre information. These are current product views displaying historical race data. They are not screenshots of the October prototype and do not establish live-session availability. The application is accessible at [F1 Telemetry](https://gridlock-f1dash.duckdns.org/).
+The captured interface shows a championship overview, historical race dashboard, driver profiles, telemetry timelines and tyre information. These are current product views displaying historical race data. They are not screenshots of the original prototype and do not establish live-session availability. The application is accessible at [F1 Telemetry](https://gridlock-f1dash.duckdns.org/).
 
 The next chapter explores an early solution to a very practical constraint: how to test a race dashboard when there is no live race. From there, the series will investigate request coordination and interactive telemetry charts, before returning to other verified decisions and to the evolution of GRIDLOCK.
 

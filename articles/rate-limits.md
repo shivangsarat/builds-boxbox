@@ -14,7 +14,7 @@ The four-device observation demonstrates an operational symptom. It is not a tra
 
 ## Early changes in the Git history
 
-A 3 October 2026 rate-limiting commit changed several parts of the then-current implementation. The paid-provider polling interval increased from two seconds to three seconds, retry handling was introduced, session-detail retrieval was staggered and the data-service queue was adjusted to enforce at least 500 milliseconds between request starts.
+An early rate-limiting change changed several parts of the then-current implementation. The paid-provider polling interval increased from two seconds to three seconds, retry handling was introduced, session-detail retrieval was staggered and the data-service queue was adjusted to enforce at least 500 milliseconds between request starts.
 
 These are historical code settings, not current provider guarantees or measurements. The live-provider architecture has been explored on multiple branches, so it would be misleading to describe all of the historical polling logic as the deployed live path today.
 

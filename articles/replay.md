@@ -6,9 +6,9 @@ The distinction matters. I was not attempting to reproduce every event in a race
 
 ## The early implementation
 
-The first main-branch commit, dated 2 October 2026, already contained a backend, frontend, telemetry processing, live delivery and several race-specific views. Later that day, the “mock live and ui upgrades” commit introduced a development package called the F1 Time Machine. The application's data-source configuration could direct requests through that service rather than the usual upstream endpoints.
+The first recorded main-branch implementation already contained a backend, frontend, telemetry processing, live delivery and several race-specific views. An early follow-up change introduced a development package called the F1 Time Machine. The application's data-source configuration could direct requests through that service rather than the usual upstream endpoints.
 
-The service selected an archived 2024 Baku race. Requests for the special latest-session identifier were mapped to that session, while session dates were shifted relative to the development server's clock. For session-list responses, the target race received a simulated start and end time. The development service also cached downloaded records in memory and limited some car-data and position responses to the last 120 records.
+The service selected an archived Baku race. Requests for the special latest-session identifier were mapped to that session, while session dates were shifted relative to the development server's clock. For session-list responses, the target race received a simulated start and end time. The development service also cached downloaded records in memory and limited some car-data and position responses to the last 120 records.
 
 The choice of historical records was practical: they already provide domain structure, including drivers, sessions, positions and car-data samples. A test double can expose familiar response shapes while changing the temporal context in which the application sees them.
 
