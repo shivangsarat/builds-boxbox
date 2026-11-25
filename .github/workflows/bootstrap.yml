@@ -32,6 +32,8 @@ jobs:
           with ZipFile('/tmp/boxbox.zip') as z:
               assert set(z.namelist()) == expected
               for name in sorted(expected):
+                  if name == '.github/workflows/pages.yml':
+                      continue
                   p=Path(name)
                   p.parent.mkdir(parents=True,exist_ok=True)
                   p.write_bytes(z.read(name))
@@ -42,7 +44,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add .github/workflows/pages.yml .gitignore README.md requirements.txt articles assets scripts
+          git add .gitignore README.md requirements.txt articles assets scripts
           git commit -m "Bootstrap BoxBox Builds public engineering journal"
           git push origin HEAD:main
       - uses: actions/upload-pages-artifact@v3
