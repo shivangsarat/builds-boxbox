@@ -1,0 +1,63 @@
+name: Bootstrap approved blog and deploy
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/bootstrap.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: boxbox-pages
+  cancel-in-progress: false
+jobs:
+  seed:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify and unpack public-safe source
+        run: |
+          test ! -e articles/index.json
+          curl --fail --silent --show-error --location --max-time 60 --max-filesize 2000000 'https://drive.google.com/uc?export=download&id=18TeH_Td-Tv21PNi-rZaCuWiI8utrpALt' -o /tmp/boxbox.zip
+          echo '648844d8a04746c495847ae21eed3d8cb32afce9ecb77d97722b3c34c89c14c5  /tmp/boxbox.zip' | sha256sum --check
+          python - <<'PY'
+          from zipfile import ZipFile
+          from pathlib import Path
+          expected = set(''' .github/workflows/pages.yml .gitignore README.md requirements.txt articles/index.json articles/intro.md articles/replay.md articles/rate-limits.md articles/timeline.md assets/TEL-002.png assets/TEL-003.png assets/TEL-004.png assets/telemetry-overview.png assets/style.css assets/search.js scripts/build.py scripts/check.py '''.split())
+          with ZipFile('/tmp/boxbox.zip') as z:
+              assert set(z.namelist()) == expected
+              for name in sorted(expected):
+                  p=Path(name)
+                  p.parent.mkdir(parents=True,exist_ok=True)
+                  p.write_bytes(z.read(name))
+          PY
+      - run: pip install -r requirements.txt
+      - run: python scripts/build.py && python scripts/check.py
+      - name: Commit site source
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .github/workflows/pages.yml .gitignore README.md requirements.txt articles assets scripts
+          git commit -m "Bootstrap BoxBox Builds public engineering journal"
+          git push origin HEAD:main
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+  deploy:
+    needs: seed
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
