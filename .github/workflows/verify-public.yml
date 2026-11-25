@@ -53,7 +53,7 @@ jobs:
                   if u.startswith(base):images.add(u[len(base):])
           for path in sorted(images):
               assert fetch(path).startswith(b'\x89PNG\r\n\x1a\n')
-          for path in ['rss.xml','sitemap.xml']:
+          for path in ['feed.xml','sitemap.xml']:
               xml=fetch(path);ET.fromstring(xml)
               for slug in articles: assert (base+slug).encode() in xml,(path,slug)
           print('ALL PUBLIC URL CHECKS PASSED',flush=True)
