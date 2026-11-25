@@ -1,0 +1,74 @@
+[
+  {
+    "id": "TEL-INTRO-001",
+    "slug": "building-my-own-f1-pit-wall",
+    "title": "Building my own Formula 1 pit wall",
+    "summary": "From the first recorded implementation to the questions that shaped a real-time race dashboard.",
+    "source": "intro.md",
+    "image": "telemetry-overview.png",
+    "alt": "Current F1 Telemetry homepage with championship standings and race calendar.",
+    "caption": "Current product interface, captured 25 November 2026. Not the original October prototype.",
+    "tags": [
+      "Project origins",
+      "Architecture"
+    ],
+    "edition": "01",
+    "social_date": "2026-11-25",
+    "project": "F1 Telemetry",
+    "approved": true
+  },
+  {
+    "id": "TEL-002",
+    "slug": "testing-a-race-without-a-live-race",
+    "title": "Testing a race without a live race",
+    "summary": "An early development adapter turned historical race data into a controllable test input.",
+    "source": "replay.md",
+    "image": "TEL-002.png",
+    "alt": "Historical race dashboard and an illustrative flow from archived session through simulated clock to dashboard.",
+    "caption": "Current dashboard showing a historical session, with a conceptual illustration of the early replay experiment.",
+    "tags": [
+      "Replay",
+      "Testing"
+    ],
+    "edition": "02",
+    "social_date": "2026-12-09",
+    "project": "F1 Telemetry",
+    "approved": true
+  },
+  {
+    "id": "TEL-003",
+    "slug": "four-screens-one-upstream-budget",
+    "title": "Four screens, one upstream budget",
+    "summary": "What a shared WebSocket does not solve, and how caching, coalescing and pacing fit together.",
+    "source": "rate-limits.md",
+    "image": "TEL-003.png",
+    "alt": "Dashboard screenshot and conceptual request coordination flow through a cache and queue.",
+    "caption": "Current application and conceptual request-coordination diagram. Not a measured traffic trace.",
+    "tags": [
+      "API design",
+      "Reliability"
+    ],
+    "edition": "03",
+    "social_date": "2026-12-23",
+    "project": "F1 Telemetry",
+    "approved": true
+  },
+  {
+    "id": "TEL-004",
+    "slug": "the-race-moves-on",
+    "title": "The race moves on. The chart can look back.",
+    "summary": "Separating a driver\u2019s telemetry timeline from the user\u2019s selected viewport.",
+    "source": "timeline.md",
+    "image": "TEL-004.png",
+    "alt": "Current driver profile and conceptual flow from incoming telemetry through timeline state to the visible window.",
+    "caption": "Current historical-session interface and illustrative chart-state model.",
+    "tags": [
+      "Data visualization",
+      "State management"
+    ],
+    "edition": "04",
+    "social_date": "2027-01-06",
+    "project": "F1 Telemetry",
+    "approved": true
+  }
+]
